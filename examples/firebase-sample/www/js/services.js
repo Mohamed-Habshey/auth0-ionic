@@ -5,7 +5,7 @@ angular.module('starter.services', ['firebase'])
  */
 .service('Friends', function($firebase, store, $state) {
 
-  var friendsRef = new Firebase("https://auth0-ionic-sample.firebaseio.com/friends");
+  var friendsRef = new Firebase("https://irehearsehabashy.firebaseio.com/");
   friendsRef.authWithCustomToken(store.get('firebaseToken'), function(error, auth) {
     if (error) {
       // There was an error logging in, redirect the user to login page

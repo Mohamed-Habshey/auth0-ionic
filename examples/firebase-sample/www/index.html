@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+	<meta http-equiv="Content-Security-Policy" content="default-src *; script-src &apos;self&apos; &apos;unsafe-inline&apos; &apos;unsafe-eval&apos; *; style-src  &apos;self&apos; &apos;unsafe-inline&apos; *">
     <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
@@ -23,7 +24,7 @@
     <script src="lib/angular-jwt/dist/angular-jwt.js"></script>
     <script src="lib/firebase/firebase.js"></script>
     <script src="lib/angularfire/dist/angularfire.js"></script>
-
+<script src="https://cdn.auth0.com/js/lock-passwordless-1.0.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
