@@ -3,7 +3,7 @@ angular.module('starter.services', ['firebase'])
 /**
  * A simple example service that returns some data.
  */
-.service('Friends', function($firebase, store, $state) {
+.service('Friends', function( store, $state,$firebaseArray) {
 
   var friendsRef = new Firebase("https://irehearsehabashy.firebaseio.com/");
   friendsRef.authWithCustomToken(store.get('firebaseToken'), function(error, auth) {
@@ -13,8 +13,10 @@ angular.module('starter.services', ['firebase'])
     }
   });
 
-  var friendsSync = $firebase(friendsRef);
-  var friends = friendsSync.$asArray();
+  //var friendsSync = $firebase(friendsRef);
+  //var friends = friendsSync.$asArray();
+   var friends = $firebaseArray(friendsRef);
+  
 
   this.all = function() {
     return friends;

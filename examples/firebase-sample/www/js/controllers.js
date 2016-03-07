@@ -27,31 +27,48 @@ angular.module('starter.controllers', [])
   
    // Initialize Passwordless Lock instance
     var lock = new Auth0LockPasswordless('gJ1hHRHwGRnZjdcpe4mPLy2mUHaMyVJy', 'mhabshey.auth0.com');
-    // Open the lock in Email Code mode with the ability to handle
-    // the authentication in page
-    lock.emailcode( function (err, profile, id_token, state, refresh_token) {
-      if (!err) {
-        // Save the JWT token.
-        localStorage.setItem('userToken', id_token);
+   
+	
+	
+	  // Open the lock in SMS mode with the ability to handle the authentication in page
+    lock.sms(function (error, profile, id_token, access_token, state, refresh_token) {
+      if (!error) {
+        //usually save profile and id_token
+		  localStorage.setItem('userToken', id_token);
 		console.log("state: "+state);
         //use profile
 		 store.set('profile', profile);
-      store.set('token', id_token);
+      
       store.set('refreshToken', refresh_token);
-      auth.getToken({
-        api: 'firebase'
-      }).then(function(delegation) {
-        store.set('firebaseToken', delegation.id_token);
-        $state.go('tab.friends');
-      }, function(error) {
-        // Error getting the firebase token
-		console.log("Error getting the firebase token: "+ error);
-      })
-      }else {
-	  console.log("error auth with email: "+ err);
-	  }
+      }
     });
 	
+	 // Open the lock in Email Code mode with the ability to handle
+    // the authentication in page
+    // lock.emailcode( function (err, profile, id_token, state) {
+      // if (!err) {
+        // // Save the JWT token.
+        // localStorage.setItem('userToken', id_token);
+		// console.log("state: "+state);
+        // //use profile
+		 // store.set('profile', profile);
+    // //  store.set('token', id_token);
+	  
+     // // store.set('refreshToken', refresh_token);
+      // auth.getToken({
+        // api: 'firebase'
+      // }).then(function(delegation) {
+        // store.set('firebaseToken', delegation.id_token);
+        // $state.go('tab.friends');
+      // }, function(error) {
+        // // Error getting the firebase token
+		// console.log("Error getting the firebase token: "+ error);
+      // })
+      // }else {
+	  // console.log("error auth with email: "+ err);
+	  // }
+    // });
+
 	
 })
 
